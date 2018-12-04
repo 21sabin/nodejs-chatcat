@@ -1,6 +1,8 @@
 const express = require('express');
 const router = require('express').Router();
 const h = require('./../helpers');
+const sendMail = require('../helpers/mail/mailConfig');
+const passport  =require('passport')
 
 module.exports =()=>{
     let routes = {
@@ -19,6 +21,18 @@ module.exports =()=>{
                req.session.userid="user";
                console.log(req.session,"requ")
                res.send("Session is set")
+            },
+            '/auth/facebook':passport.authenticate('facebook'),
+            '/auth/facebook/callback':passport.authenticate('facebook',{
+                successRedirect:'/room',
+                failureRedirect:'/'
+            })
+    
+        },
+        'post':{
+            '/sendMail':( req ,res ,next)=>{
+                console.log("mail route")
+                sendMail();
             }
         }
     }
