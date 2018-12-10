@@ -7,7 +7,7 @@ if( process.env.NODE_ENV==='production'){
         clientID:process.env.clientID,
         clientSecret:process.env.clientSecret,
         callBackURI:process.env.host+'/auth/facebook/callback',
-        profileFields:['id','displayName','photos']
+        profileFields: ['id', 'displayName', 'photos', 'emails', 'birthday']
     }
 }else{
     module.exports = require('./development')

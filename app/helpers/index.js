@@ -2,7 +2,6 @@ const router = require("express").Router();
 const UserModel = require("../model/User");
 
 let _registerRoutes = (routes, method) => {
-  console.log(routes, "route");
   for (let key in routes) {
     if (
       routes[key] !== null &&
@@ -22,7 +21,6 @@ let _registerRoutes = (routes, method) => {
 };
 
 let route = routes => {
-  console.log(routes, "routes");
   _registerRoutes(routes);
   return router;
 };

@@ -11,8 +11,8 @@ module.exports =()=>{
                 console.log("login")
                 res.render('login')
             }  ,
-            '/chatroom':( req ,res ,next)=>{
-                res.render('chatroom')
+            '/rooms':( req ,res ,next)=>{
+                res.render('rooms')
             },
             '/getSession':( req,res,next )=>{
                 res.send('Session:'+req.session.userid)
@@ -24,14 +24,14 @@ module.exports =()=>{
             },
             '/auth/facebook':passport.authenticate('facebook'),
             '/auth/facebook/callback':passport.authenticate('facebook',{
-                successRedirect:'/room',
+                successRedirect:'/rooms',
                 failureRedirect:'/'
             })
     
         },
         'post':{
             '/sendMail':( req ,res ,next)=>{
-                console.log("mail route")
+                
                 sendMail();
             }
         }
