@@ -13,6 +13,7 @@ app.use(express.static('public'))
 app.use(passport.initialize());
 app.use(passport.session())
 
+
 app.use(chatCat.session);
 app.use('/',chatCat.router);
 
