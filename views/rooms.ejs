@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ChatCat - Rooms</title>
+	<link rel="stylesheet" href="./css/roomsStyles.css">
+	<script src="/js/jquery-2.1.4.min.js"></script>
+
+	<!-- socket library automatically creates this link and serve the socket.io.js -->
+	<!-- socket.io on client has to reach out to the socket.io in the server to start communication -->
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		'use-strict'
+		$(()=>{
+			//io is an instance provided by socket.io.js library
+			//here roomlist is not a route
+			//it is a main pipeline through which differen paclet(data) related ro rooms page is transfered
+			//we can create a multiple subpipeline for sending different packet
+			let socket = io( 'http://localhost:3000/roomlist' );
+		})
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="titlePanel">
+			<h1>ChatCAT | Select or Create a Chatroom</h1>
+		</div>
+		<div class="controls">
+			<div class="userPicHolder"><img src="./img/user.jpg" alt="John Doe"></div>
+			<p class="userName">John Doe</p>
+			<a href="login.htm" id="logOutBtn">Logout</a>
+		</div>
+		<div class="controls">
+			<input type="text" name="roomName" placeholder="Create a new Chatroom">
+			<a href="#" id="createBtn">Create</a>
+		</div>
+		<div class="roomsListDiv">
+			<ul class="roomsList" id="roomsListUL">
+			<!-- Loop list items here -->
+				<a href="chatroom.htm"><li>World Cuisine</li></a>
+				<a href="chatroom.htm"><li>Coffee and Conversations</li></a>
+			<!-- Loop ends -->
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
